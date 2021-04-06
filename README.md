@@ -47,7 +47,8 @@ When reading events off Flow you can use the ```FlowCompositeTypeConverter``` in
   }
 ```
 
-In the above example you can now access Event data either via key or by using the built in value type converts that will convert Flow Composite Types to Flow.SDK.ValueTypes
+In the above example you can now access Event data either via key or by using the built in value type converts that will convert Flow Composite Types to Flow.SDK.ValueTypes.
+
 **By Key**
 ```csharp
 momentComposite.Fields.FirstOrDefault(x => x.Key == "id").Value)
