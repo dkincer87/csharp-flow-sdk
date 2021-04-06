@@ -57,3 +57,19 @@ momentComposite.Fields.FirstOrDefault(x => x.Key == "id").Value)
 ```csharp
 UInt64Type.FromJson(momentComposite.Fields.FirstOrDefault(x => x.Key == "id").Value);
 ```
+
+<h2> Executing Cadence Scripts With Variables</h2>
+
+```ExecuteScriptAtBlockHeightAsync``` allows you to execute your Cadence script at the desired Blockheight. If your Cadence script has arguments the last parameter of ```ExecuteScriptAtBlockHeightAsync``` will take a list of ```FlowValueType```. You can pass in as many as you like but please keep in mind **ORDER MATTERS**. Put the arguments in the list the same order they need to be injected into the script.The Value Types have a built in Cadence Serializer that will make sure your args are in the correct format. The script bytes will also be converted to the proper Google Protobuf ByteString. 
+
+```csharp
+ //Convert your script into a byte array
+ var scriptBytes = Encoding.ASCII.GetBytes("Your raw Cadence script");
+ //Create our Flow.SDK.ValueTypes
+ var address = new AddressType("MyAddress");
+ var momentId = new UInt64Type(123456789);
+ 
+ //Execute the script
+ var momentData = await client.ExecuteScriptAtBlockHeightAsync(blockHeight, scriptBytes, new List<FlowValueType>() { address, momentId });
+
+```
