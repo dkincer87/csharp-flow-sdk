@@ -26,7 +26,7 @@ flowClient.GetEventsForHeightRangeAsync("YOUR_EVENT", blockHeight, blockHeight);
 <h2> Protobuf </h2>
 All the flow protobuffs are stored under the Proto folder.
 
-<h2> Reading Events <h2>
+<h2> Reading Events </h2>
   
 When reading events off Flow you can use the ```FlowCompositeTypeConverter``` in JSON.net. This will break down [Cadence Composite Types](https://docs.onflow.org/cadence/json-cadence-spec#composites-struct-resource-event-contract-enum) to a Flow SDK ```CompositeType```. ```Composite Types``` consist of the Composite Type under the ```Type``` property, ```Id``` which is the token fully qualified type identifier, and a ```Dictionary<string,string>```. They Keys in the dictionary are the property names and the Values are the cadence values from the Block Event.
 
